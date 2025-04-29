@@ -57,22 +57,34 @@
 
     .certificado {
       display: none;
-      max-width: 700px;
+      max-width: 90%;
       margin: 60px auto 0 auto;
-      padding: 30px;
+      padding: 20px;
       background-color: #fff;
       border: 2px solid #b48b63;
       border-radius: 15px;
       text-align: center;
+      box-sizing: border-box;
     }
 
     .certificado h1 {
-      font-size: 2em;
+      font-size: 1.8em;
       margin-bottom: 10px;
     }
 
+    .orgulho, .curso, .data {
+      font-size: 1rem;
+      margin: 10px 0;
+    }
+
+    .nome {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
     .assinatura img {
-      height: 80px;
+      height: 60px;
       margin-top: 20px;
     }
 
@@ -118,7 +130,6 @@
 
     .info-item i {
       color: #b48b63;
-      margin-right: 15px;
       font-size: 1.8rem;
     }
 
@@ -139,6 +150,42 @@
       padding: 20px;
       text-align: center;
       color: #5a3e2b;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .form-container {
+        margin: 20px;
+        padding: 15px;
+      }
+
+      .certificado {
+        padding: 15px;
+      }
+
+      .certificado h1 {
+        font-size: 1.5em;
+      }
+
+      .nome {
+        font-size: 1.1rem;
+      }
+
+      .info-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .info-item {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .info-item i {
+        font-size: 1.5rem;
+        margin-right: 10px;
+      }
     }
   </style>
 </head>
@@ -241,6 +288,7 @@
       document.getElementById('outCurso').innerText = `Concluiu com sucesso o curso de ${curso} com carga horária de 3 horas.`;
       document.getElementById('dataHoje').innerText = dataHoje;
       document.getElementById('certificado').style.display = 'block';
+      document.getElementById('certificado').scrollIntoView({ behavior: 'smooth' });
     }
 
     function baixarPDF() {
