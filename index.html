@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificados</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fffaf7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      padding-bottom: 60px;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f8f1ea;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 90%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #b48b63;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .certificado {
+      display: none;
+      max-width: 700px;
+      margin: 60px auto 0 auto;
+      padding: 30px;
+      background-color: #fff;
+      border: 2px solid #b48b63;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .certificado h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .assinatura img {
+      height: 80px;
+      margin-top: 20px;
+    }
+
+    .linha-assinatura {
+      width: 200px;
+      height: 1px;
+      background-color: #000;
+      margin: 10px auto;
+    }
+
+    .btn-pdf {
+      margin-top: 30px;
+    }
+
+    /* Contato */
+    #contact {
+      background: #f3ebe5;
+      padding: 60px 20px;
+      margin-top: 80px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .info-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-align: left;
+    }
+
+    .info-item i {
+      color: #b48b63;
+      margin-right: 15px;
+      font-size: 1.8rem;
+    }
+
+    .info-item h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .info-item p, .info-item a {
+      margin: 0;
+      color: #333;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .footer {
+      background: #e9d7c7;
+      padding: 20px;
+      text-align: center;
+      color: #5a3e2b;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="form-container">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required />
+
+      <label for="curso">Curso:</label>
+      <select id="curso">
+        <option value=""></option>
+        <option value="Banho de Ervas: Rituais de Renovação e Equilíbrio">Banho de Ervas: Rituais de Renovação e Equilíbrio</option>
+        <option value="Bênções para Animais: Proteção, Cura e Conexão">Bênções para Animais: Proteção, Cura e Conexão</option>
+      </select>
+
+      <button onclick="gerarCertificado()">Gerar Certificado</button>
+    </div>
+
+    <div class="certificado" id="certificado">
+      <h1>CERTIFICADO</h1>
+      <p class="orgulho">Temos o orgulho de certificar que</p>
+      <p class="nome" id="outNome">[Nome do participante]</p>
+      <p class="curso" id="outCurso">Concluiu com sucesso o curso de [Curso] com carga horária de 3 horas.</p>
+      <p class="data">Emitido em <span id="dataHoje"></span></p>
+
+      <div class="assinatura">
+        <img src="img/Imagem do WhatsApp de 2025-04-29 à(s) 13.23.54_c9079ccc.png" alt="Assinatura Marilúcia" />
+        <div class="linha-assinatura"></div>
+        <p class="cargo">Mãe de Santo Marilucia</p>
+      </div>
+
+      <div class="btn-pdf">
+        <button onclick="baixarPDF()">Baixar PDF</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Contato -->
+  <section id="contact">
+    <div class="section-title">
+      <h2>Contato</h2>
+      <p>Tem alguma dúvida ou gostaria de saber mais?<br>Estamos à disposição para te atender com carinho e atenção.</p>
+    </div>
+
+    <div class="info-wrap">
+      <div class="info-item">
+        <i class="bi bi-geo-alt"></i>
+        <div>
+          <h3>Endereço</h3>
+          <p>Avenida Aviação Portuguesa n7A<br>Pêro Pinheiro, Sintra 2715-311<br>Barracão 1° B, Portugal</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <i class="bi bi-telephone"></i>
+        <div>
+          <h3>Telefone</h3>
+          <p><a href="https://api.whatsapp.com/send?phone=351912888235">+351 912 888 235</a></p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <i class="bi bi-facebook"></i>
+        <div>
+          <h3>Facebook</h3>
+          <p><a href="https://www.facebook.com/marilucia.caetano.7">/marilucia.caetano.7</a></p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <i class="bi bi-instagram"></i>
+        <div>
+          <h3>Instagram</h3>
+          <p><a href="https://www.instagram.com/mariluciadonato45">@mariluciadonato45</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 <strong>Marilucia</strong> — Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    function gerarCertificado() {
+      const nome = document.getElementById('nome').value;
+      const curso = document.getElementById('curso').value;
+      const dataHoje = new Date().toLocaleDateString('pt-BR');
+
+      if (!nome || !curso) {
+        alert("Preencha todos os campos.");
+        return;
+      }
+
+      document.getElementById('outNome').innerText = nome;
+      document.getElementById('outCurso').innerText = `Concluiu com sucesso o curso de ${curso} com carga horária de 3 horas.`;
+      document.getElementById('dataHoje').innerText = dataHoje;
+      document.getElementById('certificado').style.display = 'block';
+    }
+
+    function baixarPDF() {
+      const certificado = document.getElementById('certificado');
+      html2pdf().from(certificado).save();
+    }
+  </script>
+</body>
+</html>
