@@ -158,5 +158,12 @@ body {
       padding: 0.8rem;
     }
   }
-    
+
+  /* Oculta elementos da classe .btn-pdf durante a geração do PDF */
+@media print {
+    .btn-pdf {
+      display: none;
+    }
+  }
+  
     

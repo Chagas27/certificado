@@ -21,12 +21,19 @@ function gerarCertificado() {
   
   function baixarPDF() {
     const certificado = document.getElementById("certificado");
+    const btnPDF = document.querySelector('.btn-pdf');
+  
+    // Oculta o botão antes de gerar o PDF
+    btnPDF.style.display = 'none';
   
     html2pdf().from(certificado).set({
       margin: 0,
       filename: 'certificado.pdf',
       html2canvas: { scale: 3 },
       jsPDF: { orientation: 'landscape', format: 'a4' }
-    }).save();
+    }).save().then(() => {
+      // Exibe novamente o botão após salvar o PDF
+      btnPDF.style.display = 'block';
+    });
   }
   
